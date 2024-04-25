@@ -82,11 +82,11 @@ class ChessUI:
 
     def draw_knights(self):
         # Dibujar caballos blancos en las esquinas superiores
-        self.window.blit(self.white_knight, (self.square_size // 2 - self.piezas_size[0] // 2, (self.square_size - self.piezas_size[1]) // 2))
-        self.window.blit(self.white_knight, ((6 * self.square_size) + self.square_size // 2 - self.piezas_size[0] // 2, (self.square_size - self.piezas_size[1]) // 2))
+        self.window.blit(self.white_knight, (self.square_size + self.square_size // 2 - self.piezas_size[0] // 2, self.square_size // 2 - self.piezas_size[1] // 2))
+        self.window.blit(self.white_knight, ((6 * self.square_size) + self.square_size // 2 - self.piezas_size[0] // 2, self.square_size // 2 - self.piezas_size[1] // 2))
         # Dibujar caballos negros en las esquinas inferiores
-        self.window.blit(self.black_knight, (self.square_size // 2 - self.piezas_size[0] // 2, (7 * self.square_size) + (self.square_size - self.piezas_size[1]) // 2))
-        self.window.blit(self.black_knight, ((6 * self.square_size) + self.square_size // 2 - self.piezas_size[0] // 2, (7 * self.square_size) + (self.square_size - self.piezas_size[1]) // 2))
+        self.window.blit(self.black_knight, (self.square_size + self.square_size // 2 - self.piezas_size[0] // 2, (7 * self.square_size) + self.square_size // 2 - self.piezas_size[1] // 2))
+        self.window.blit(self.black_knight, ((6 * self.square_size) + self.square_size // 2 - self.piezas_size[0] // 2, (7 * self.square_size) + self.square_size // 2 - self.piezas_size[1] // 2))
 
 
     
@@ -105,6 +105,7 @@ class ChessUI:
             # Dibujar peones en el tablero
             self.draw_pawns()
             self.draw_rooks()
+            self.draw_knights()
 
             # Actualizar la pantalla
             pygame.display.update()
