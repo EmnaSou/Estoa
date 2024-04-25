@@ -1,18 +1,8 @@
-from clases.ChessUI import ChessUI
+from Clases.chessUI import ChessUI
 
 def main():
-    import tkinter as tk
+    chess_ui = ChessUI()
+    chess_ui.run()
 
-    root = tk.Tk()
-    chess_ui = ChessUI(root)
-    board_state = [
-        ["R", "N", "B", "Q", "K", "B", "N", "R"],
-        ["P", "P", "P", "P", "P", "P", "P", "P"],
-        [" ", " ", " ", " ", " ", " ", " ", " "],
-        [" ", " ", " ", " ", " ", " ", " ", " "],
-        [" ", " ", " ", " ", " ", " ", " ", " "],
-        [" ", " ", " ", " ", " ", " ", " ", " "],
-        ["p", "p", "p", "p", "p", "p", "p", "p"],
-        ["r", "n", "b", "q", "k", "b", "n", "r"]
-    ]
-    chess_ui.update_board
+if __name__ == "__main__":
+    main()
