@@ -1,13 +1,6 @@
 import pygame
-import sys
 import os
-#from Clases.Piezas.alfil import alfil
-#from Clases.Piezas.caballo import caballo
-from Clases.Piezas.Peon import Peon
-#from Clases.Piezas.reina import reina
-#from Clases.Piezas.rey import rey
-#from Clases.Piezas.torre import torre
-
+import sys
 
 class ChessUI:
     def __init__(self, window_width=600, window_height=600):
@@ -25,29 +18,40 @@ class ChessUI:
         # Crear ventana
         self.window = pygame.display.set_mode((self.window_width, self.window_height))
         pygame.display.set_caption("Tablero de Ajedrez")
-        
+
         # Tamaño del cuadrado del tablero
         self.square_size = self.window_width // 8  
 
         # Directorio donde se encuentran las imágenes de las piezas
         self.images_dir = os.path.join("Clases", "Imagenes")
 
-        # Cargar imágenes de los peones
-        self.white_pawn_image = pygame.image.load(os.path.join(self.images_dir, "white_pawn.png"))
-        self.black_pawn_image = pygame.image.load(os.path.join(self.images_dir, "black_pawn.png"))
-
-        # Crear instancia de peón blanco en la posición (1, 2)
-        self.white_pawn = Peon(color="white", position=(1, 2))
+        # Cargar imágenes de los peones blancos y negros
+        self.white_pawn_image = pygame.image.load(os.path.join(self.images_dir, "white pawn.png"))
+        self.black_pawn_image = pygame.image.load(os.path.join(self.images_dir, "black pawn.png"))
 
     def draw_chessboard(self):
-        square_size = self.window_width // 8  # Tamaño de cada cuadrado del tablero
         for row in range(8):
             for col in range(8):
                 if (row + col) % 2 == 0:
                     color = self.WHITE
                 else:
                     color = self.BLACK
-                pygame.draw.rect(self.window, color, (col * square_size, row * square_size, square_size, square_size))
+                pygame.draw.rect(self.window, color, (col * self.square_size, row * self.square_size, self.square_size, self.square_size))
+
+    def draw_pawns(self):
+        for row in range(8):
+            # Dibujar peones blancos en la segunda fila
+            if row == 1:
+                for col in range(8):
+                    x = col * self.square_size
+                    y = row * self.square_size
+                    self.window.blit(self.white_pawn_image, (x, y))
+            # Dibujar peones negros en la séptima fila
+            elif row == 6:
+                for col in range(8):
+                    x = col * self.square_size
+                    y = row * self.square_size
+                    self.window.blit(self.black_pawn_image, (x, y))
 
     def run(self):
         # Bucle principal del juego
@@ -60,6 +64,9 @@ class ChessUI:
             # Dibujar el tablero de ajedrez
             self.window.fill(self.WHITE)  # Llenar la ventana con color blanco
             self.draw_chessboard()
+
+            # Dibujar peones en el tablero
+            self.draw_pawns()
 
             # Actualizar la pantalla
             pygame.display.update()
