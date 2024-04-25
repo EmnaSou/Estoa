@@ -26,14 +26,14 @@ class ChessUI:
         self.images_dir = os.path.join("Clases", "Imagenes")
 
         # Cargar imágenes de los peones blancos y negros
-        self.white_pawn_image = pygame.image.load(os.path.join(self.images_dir, "white pawn.png"))
-        self.black_pawn_image = pygame.image.load(os.path.join(self.images_dir, "black pawn.png"))
+        self.white_pawn = pygame.image.load(os.path.join(self.images_dir, "white pawn.png"))
+        self.black_pawn = pygame.image.load(os.path.join(self.images_dir, "black pawn.png"))
         # Tamaño de los peones
         self.pawn_size = (50, 50)  # Anchura y altura deseada para los peones
 
         # Cargar imágenes de los peones blancos y negros y ajustar su tamaño
-        self.white_pawn_image = pygame.transform.scale(pygame.image.load(os.path.join(self.images_dir, "white pawn.png")), self.pawn_size)
-        self.black_pawn_image = pygame.transform.scale(pygame.image.load(os.path.join(self.images_dir, "black pawn.png")), self.pawn_size)
+        self.white_pawn = pygame.transform.scale(pygame.image.load(os.path.join(self.images_dir, "white pawn.png")), self.pawn_size)
+        self.black_pawn = pygame.transform.scale(pygame.image.load(os.path.join(self.images_dir, "black pawn.png")), self.pawn_size)
 
     def draw_chessboard(self):
         for row in range(8):
@@ -49,15 +49,15 @@ class ChessUI:
             # Dibujar peones blancos en la segunda fila
             if row == 1:
                 for col in range(8):
-                    x = col * self.square_size
-                    y = row * self.square_size
-                    self.window.blit(self.white_pawn_image, (x, y))
+                    x = col * self.square_size + (self.square_size - self.pawn_size[0]) // 2
+                    y = row * self.square_size + (self.square_size - self.pawn_size[0]) // 2 
+                    self.window.blit(self.white_pawn, (x, y))
             # Dibujar peones negros en la séptima fila
             elif row == 6:
                 for col in range(8):
-                    x = col * self.square_size
-                    y = row * self.square_size
-                    self.window.blit(self.black_pawn_image, (x, y))
+                    x = col * self.square_size + (self.square_size - self.pawn_size[0]) // 2
+                    y = row * self.square_size + (self.square_size - self.pawn_size[1]) // 2
+                    self.window.blit(self.black_pawn, (x, y))
 
     def run(self):
         # Bucle principal del juego
