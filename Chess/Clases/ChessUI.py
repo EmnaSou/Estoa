@@ -28,6 +28,12 @@ class ChessUI:
         # Cargar imágenes de los peones blancos y negros
         self.white_pawn_image = pygame.image.load(os.path.join(self.images_dir, "white pawn.png"))
         self.black_pawn_image = pygame.image.load(os.path.join(self.images_dir, "black pawn.png"))
+        # Tamaño de los peones
+        self.pawn_size = (50, 50)  # Anchura y altura deseada para los peones
+
+        # Cargar imágenes de los peones blancos y negros y ajustar su tamaño
+        self.white_pawn_image = pygame.transform.scale(pygame.image.load(os.path.join(self.images_dir, "white pawn.png")), self.pawn_size)
+        self.black_pawn_image = pygame.transform.scale(pygame.image.load(os.path.join(self.images_dir, "black pawn.png")), self.pawn_size)
 
     def draw_chessboard(self):
         for row in range(8):
