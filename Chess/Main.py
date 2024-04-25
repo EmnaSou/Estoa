@@ -1,4 +1,4 @@
-from Clases.chessUI import ChessUI
+from Clases.ChessUI import ChessUI
 
 def main():
     chess_ui = ChessUI()
