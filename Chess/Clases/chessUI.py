@@ -2,7 +2,7 @@ import pygame
 import sys
 
 class ChessUI:
-    def __init__(self, window_width=400, window_height=400):
+    def __init__(self, window_width=600, window_height=600):
         # Inicialización de Pygame
         pygame.init()
 
