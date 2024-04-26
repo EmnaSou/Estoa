@@ -63,7 +63,7 @@ class ChessUI:
         self.king = King()
         
         self.white_king = pygame.transform.scale(self.king.image_white, self.pieces_size) 
-        self.king_king= pygame.transform.scale(self.king.image_black, self.pieces_size) 
+        self.black_king= pygame.transform.scale(self.king.image_black, self.pieces_size) 
         
         #Queen
         self.queen = Queen()
@@ -92,8 +92,43 @@ class ChessUI:
                     x = col * self.square_size + (self.square_size - self.pieces_size[0]) // 2
                     y = row * self.square_size + (self.square_size - self.pieces_size[1]) // 2
                     self.window.blit(self.black_pawn, (x, y))
+                    
+    def draw_rooks(self):
+        # Dibujar torres blancas en las esquinas superiores
+        self.window.blit(self.white_rook, (self.square_size // 2 - self.pieces_size[0] // 2, self.square_size // 2 - self.pieces_size[1] // 2))
+        self.window.blit(self.white_rook, ((7 * self.square_size) + self.square_size // 2 - self.pieces_size[0] // 2, self.square_size // 2 - self.pieces_size[1] // 2))
+        # Dibujar torres negras en las esquinas inferiores
+        self.window.blit(self.black_rook, (self.square_size // 2 - self.pieces_size[0] // 2, (7 * self.square_size) + self.square_size // 2 - self.pieces_size[1] // 2))
+        self.window.blit(self.black_rook, ((7 * self.square_size) + self.square_size // 2 - self.pieces_size[0] // 2, (7 * self.square_size) + self.square_size // 2 - self.pieces_size[1] // 2))
 
+    def draw_knights(self):
+        # Dibujar caballos blancos en las esquinas superiores
+        self.window.blit(self.white_knight, (self.square_size + self.square_size // 2 - self.pieces_size[0] // 2, self.square_size // 2 - self.pieces_size[1] // 2))
+        self.window.blit(self.white_knight, ((6 * self.square_size) + self.square_size // 2 - self.pieces_size[0] // 2, self.square_size // 2 - self.pieces_size[1] // 2))
+        # Dibujar caballos negros en las esquinas inferiores
+        self.window.blit(self.black_knight, (self.square_size + self.square_size // 2 - self.pieces_size[0] // 2, (7 * self.square_size) + self.square_size // 2 - self.pieces_size[1] // 2))
+        self.window.blit(self.black_knight, ((6 * self.square_size) + self.square_size // 2 - self.pieces_size[0] // 2, (7 * self.square_size) + self.square_size // 2 - self.pieces_size[1] // 2))
+
+    def draw_bishops(self):
+        # Dibujar alfiles blancos en las esquinas superiores
+        self.window.blit(self.white_bishop, (2 * self.square_size + self.square_size // 2 - self.pieces_size[0] // 2, self.square_size // 2 - self.pieces_size[1] // 2))
+        self.window.blit(self.white_bishop, ((5 * self.square_size) + self.square_size // 2 - self.pieces_size[0] // 2, self.square_size // 2 - self.pieces_size[1] // 2))
+        # Dibujar alfiles negros en las esquinas inferiores
+        self.window.blit(self.black_bishop, (2 * self.square_size + self.square_size // 2 - self.pieces_size[0] // 2, (7 * self.square_size) + self.square_size // 2 - self.pieces_size[1] // 2))
+        self.window.blit(self.black_bishop, ((5 * self.square_size) + self.square_size // 2 - self.pieces_size[0] // 2, (7 * self.square_size) + self.square_size // 2 - self.pieces_size[1] // 2))
     
+    def draw_queen(self):
+        # Dibujar reinas blancos en las esquinas superiores
+        self.window.blit(self.white_queen, (3 * self.square_size + self.square_size // 2 - self.pieces_size[0] // 2, self.square_size // 2 - self.pieces_size[1] // 2))
+        # Dibujar reinas negros en las esquinas inferiores
+        self.window.blit(self.black_queen, (3 * self.square_size + self.square_size // 2 - self.pieces_size[0] // 2, (7 * self.square_size) + self.square_size // 2 - self.pieces_size[1] // 2))
+
+    def draw_king(self):
+        # Dibujar reinas blancos en las esquinas superiores
+        self.window.blit(self.white_king, (4 * self.square_size + self.square_size // 2 - self.pieces_size[0] // 2, self.square_size // 2 - self.pieces_size[1] // 2))
+        # Dibujar reinas negros en las esquinas inferiores
+        self.window.blit(self.black_king, (4 * self.square_size + self.square_size // 2 - self.pieces_size[0] // 2, (7 * self.square_size) + self.square_size // 2 - self.pieces_size[1] // 2))
+
     def run(self):
         # Bucle principal del juego
         running = True
@@ -108,8 +143,11 @@ class ChessUI:
 
             # Dibujar peones en el tablero
             self.draw_pawns()
-            #self.draw_rooks()
-            #self.draw_knights()
+            self.draw_rooks()
+            self.draw_knights()
+            self.draw_bishops()
+            self.draw_queen()
+            self.draw_king()
 
             # Actualizar la pantalla
             pygame.display.update()
