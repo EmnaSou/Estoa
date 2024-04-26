@@ -2,7 +2,12 @@ import pygame
 import os
 import sys
 
-from Clases.Piezas.Peon import Peon
+from Clases.Piezas.Pawn import Pawn
+from Clases.Piezas.Bishop import Bishop
+from Clases.Piezas.Rook import Rook
+from Clases.Piezas.Knight import Knight
+from Clases.Piezas.King import King
+from Clases.Piezas.Queen import Queen
 
 class ChessUI:
     def __init__(self, window_width=600, window_height=600):
@@ -28,14 +33,43 @@ class ChessUI:
         self.images_dir = os.path.join("Clases", "Imagenes")
         
         #Tamaño de los peones
-        self.piezas_size = (50, 50)  # Anchura y altura deseada para los peones
+        self.pieces_size = (50, 50)  # Anchura y altura deseada para los peones
         
         #Peones
-        self.peon = Peon()
+        self.pawn = Pawn()
         # Cargar imágenes de los peones blancos y negros y ajustar su tamaño
-        self.white_pawn = pygame.transform.scale(self.peon.image_white, self.piezas_size)
-        self.black_pawn = pygame.transform.scale(self.peon.image_black, self.piezas_size)
+        self.white_pawn = pygame.transform.scale(self.pawn.image_white, self.pieces_size)
+        self.black_pawn = pygame.transform.scale(self.pawn.image_black, self.pieces_size)
+        
+        #Torres
+        self.rook = Rook()
+        
+        self.white_rook = pygame.transform.scale(self.rook.image_white, self.pieces_size)
+        self.black_rook = pygame.transform.scale(self.rook.image_black, self.pieces_size)
+        
+        #Alfiles
+        self.bishop = Bishop()
+        
+        self.white_bishop = pygame.transform.scale(self.bishop.image_white, self.pieces_size) 
+        self.black_bishop = pygame.transform.scale(self.bishop.image_black, self.pieces_size) 
 
+        #Caballos
+        self.knight = Knight()
+        
+        self.white_knight = pygame.transform.scale(self.knight.image_white, self.pieces_size) 
+        self.black_knight = pygame.transform.scale(self.knight.image_black, self.pieces_size) 
+        
+        #King
+        self.king = King()
+        
+        self.white_king = pygame.transform.scale(self.king.image_white, self.pieces_size) 
+        self.king_king= pygame.transform.scale(self.king.image_black, self.pieces_size) 
+        
+        #Queen
+        self.queen = Queen()
+        
+        self.white_queen = pygame.transform.scale(self.queen.image_white, self.pieces_size) 
+        self.black_queen = pygame.transform.scale(self.queen.image_black, self.pieces_size) 
 
     def draw_chessboard(self):
         for row in range(8):
@@ -50,13 +84,13 @@ class ChessUI:
         for row in range(8):
             if row == 1:
                 for col in range(8):
-                    x = col * self.square_size + (self.square_size - self.piezas_size[0]) // 2
-                    y = row * self.square_size + (self.square_size - self.piezas_size[0]) // 2 
+                    x = col * self.square_size + (self.square_size - self.pieces_size[0]) // 2
+                    y = row * self.square_size + (self.square_size - self.pieces_size[0]) // 2 
                     self.window.blit(self.white_pawn, (x, y))
             elif row == 6:
                 for col in range(8):
-                    x = col * self.square_size + (self.square_size - self.piezas_size[0]) // 2
-                    y = row * self.square_size + (self.square_size - self.piezas_size[1]) // 2
+                    x = col * self.square_size + (self.square_size - self.pieces_size[0]) // 2
+                    y = row * self.square_size + (self.square_size - self.pieces_size[1]) // 2
                     self.window.blit(self.black_pawn, (x, y))
 
     

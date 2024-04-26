@@ -1,7 +1,7 @@
 import pygame
 import os
 
-class Peon:
+class Pawn:
     def __init__(self):
         self.images_dir = os.path.join("Clases", "Imagenes")
         self.image_white = pygame.image.load(os.path.join(self.images_dir, "white pawn.png"))
